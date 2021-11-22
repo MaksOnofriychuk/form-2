@@ -10,10 +10,11 @@ import _ from "lodash";
 const UsersListPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [professions, setProfession] = useState();
+    const [searchQuery, setSearchQuery] = useState("");
     const [selectedProf, setSelectedProf] = useState();
     const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
     const pageSize = 8;
-    const [searchQuery, setSearchQuery] = useState("");
+
     const [users, setUsers] = useState();
     useEffect(() => {
         api.users.fetchAll().then((data) => setUsers(data));
@@ -81,6 +82,7 @@ const UsersListPage = () => {
         const clearFilter = () => {
             setSelectedProf();
         };
+
         return (
             <div className="d-flex">
                 {professions && (
@@ -94,7 +96,6 @@ const UsersListPage = () => {
                             className="btn btn-secondary mt-2"
                             onClick={clearFilter}
                         >
-                            {" "}
                             Очиститть
                         </button>
                     </div>
@@ -104,9 +105,9 @@ const UsersListPage = () => {
                     <input
                         type="text"
                         name="searchQuery"
-                        placeholder="Search in the users"
-                        value={searchQuery}
+                        placeholder="Search..."
                         onChange={handleSearchQuery}
+                        value={searchQuery}
                     />
                     {count > 0 && (
                         <UserTable

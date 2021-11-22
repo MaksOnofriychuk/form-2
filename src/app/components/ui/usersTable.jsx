@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import BookMark from "../common/bookmark";
-import Qualities from "../ui/qualities/index";
+import Qualities from "./qualities";
 import Table from "../common/table";
 import { Link } from "react-router-dom";
 

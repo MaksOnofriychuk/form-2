@@ -6,19 +6,19 @@ const CheckBoxField = ({ name, value, onChange, children, error }) => {
         onChange({ name: name, value: !value });
     };
     const getInputClasses = () => {
-        return "form-check mb-4" + (error ? " is-invalid" : "");
+        return "form-check-input" + (error ? " is-invalid" : "");
     };
     return (
-        <div className={getInputClasses()}>
+        <div className="form-check mb-4">
             <input
-                checked={value}
-                onChange={handleChange}
-                className="form-check-input"
+                className={getInputClasses()}
                 type="checkbox"
                 value=""
                 id={name}
+                onChange={handleChange}
+                checked={value}
             />
-            <label className="form-check-label" htmlFor={name}>
+            <label className="form-check-label " htmlFor={name}>
                 {children}
             </label>
             {error && <div className="invalid-feedback">{error}</div>}
@@ -35,4 +35,5 @@ CheckBoxField.propTypes = {
     ]),
     error: PropTypes.string
 };
+
 export default CheckBoxField;
